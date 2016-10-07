@@ -9,7 +9,7 @@ const PLUGIN_NAME = 'gulp-sharp-minimal';
 function gulpSharpMinimal(options){
 
   return through.obj(function(file, encoding, callback) {
-    
+
 
     if (file.isNull()) {
       this.push(file)
@@ -18,10 +18,6 @@ function gulpSharpMinimal(options){
 
     if (!options){
       this.emit('error', new gutil.PluginError(PLUGIN_NAME, "You need to pass options to this plugin. See docs..."));
-    }
-
-    if (!options.resize) {
-      this.emit('error', new gutil.PluginError(PLUGIN_NAME, "You must pass resize as an option and it must be an array with 2 values w,h."));
     }
 
     if (file.isStream()) {
@@ -37,7 +33,6 @@ function gulpSharpMinimal(options){
         .metadata()
         .then(function(metadata){
           return image
-            .resize(...options.resize)
             .max()
             .withoutEnlargement()
             .toFormat((!options.format ? metadata.format : options.format))
@@ -48,7 +43,7 @@ function gulpSharpMinimal(options){
         .then(function(data){
           if (options.progressive){
             image.progressive()
-          } 
+          }
 
           if (options.stripMetadata){
             // if true - then we keep all EXIF data of image
@@ -84,7 +79,7 @@ function gulpSharpMinimal(options){
           // gutil.log(PLUGIN_NAME + ':', gutil.colors.green(newFile.relative + " : size before: "+file_size_before+" : size after: "+file_size_after));
           callback(null, newFile);
       });
-    }  
+    }
   });
 
 }
