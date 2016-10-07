@@ -1,6 +1,6 @@
 {
   "name": "lmn-gulp-svg-to-png",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "minimal sharp plugin for gulp",
   "author": "Sam Mason <sam.jbmason@gmail.com>",
   "repository": "pupil-labs/gulp-sharp-minimal",
