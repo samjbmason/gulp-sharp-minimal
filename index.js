@@ -31,9 +31,9 @@ function gulpSharpMinimal(options){
           return image
             .max()
             .withoutEnlargement()
-            .toFormat((!options.format ? metadata.format : options.format))
             .quality((!options.quality ? 80 : options.quality))
             .compressionLevel((!options.compressionLevel ? 6 : options.compressionLevel))
+            .toFormat((!options.format ? metadata.format : options.format))
             .toBuffer()
         })
         .then(function(data){
@@ -73,7 +73,7 @@ function gulpSharpMinimal(options){
             contents: image
           });
           // gutil.log(PLUGIN_NAME + ':', gutil.colors.green(newFile.relative + " : size before: "+file_size_before+" : size after: "+file_size_after));
-          callback(null, newFile);
+          callback(null, data);
       });
     }
   });
