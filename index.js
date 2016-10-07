@@ -16,10 +16,6 @@ function gulpSharpMinimal(options){
       return callback();
     }
 
-    if (!options){
-      this.emit('error', new gutil.PluginError(PLUGIN_NAME, "You need to pass options to this plugin. See docs..."));
-    }
-
     if (file.isStream()) {
       this.emit('error', new gutil.PluginError(PLUGIN_NAME, "Received a stream... Streams are not supported. Sorry."));
       return callback();
